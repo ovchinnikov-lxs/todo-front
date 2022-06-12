@@ -1,0 +1,39 @@
+/*
+** Grid
+*/
+
+$unit: 4px;
+
+/*
+** Breakpoints
+*/
+
+$breakpoints: (
+    mobile: 576px,
+    tablet: 1112px,
+    laptop: 1440px,
+    desktop: 1920px,
+    desktop-l: 7680px,
+);
+
+/*
+** Fonts
+*/
+
+$base-font: font-family 'Pacifico', cursive;
+
+/*
+** Colors
+*/
+
+$white: #fff;
+$black: #0c1622;
+$primary: #00dc82;
+$secondary: #eef2f6;
+$error: #f84f4f;
+
+/*
+** Ui
+*/
+
+$border-radius: 4px;

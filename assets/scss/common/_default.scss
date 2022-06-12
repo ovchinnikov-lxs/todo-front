@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: normal;
+}
+
+body {
+    overflow-y: scroll;
+    min-width: 1400px;
+    font-family: $base-font;
+    color: $black;
+    user-select: none;
+}
+
+.container {
+    max-width: 1128px;
+    margin: 0 auto;
+}
