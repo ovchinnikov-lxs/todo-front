@@ -1,0 +1,12 @@
+.tip-enter-active,
+.tip-leave-active {
+    max-height: 100px;
+    opacity: 1;
+}
+
+.tip-enter,
+.tip-leave-to {
+    max-height: 0;
+    opacity: 0;
+    transition: opacity .2s ease, max-height .1s ease .2s;
+}

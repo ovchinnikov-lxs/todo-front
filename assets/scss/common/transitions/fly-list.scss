@@ -1,0 +1,13 @@
+.fly-list-item {
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+.fly-list-enter,
+.fly-list-leave-to {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.fly-list-leave-active {
+    position: absolute;
+}
