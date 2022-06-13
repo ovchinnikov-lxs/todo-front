@@ -41,8 +41,14 @@ export default class AuthPage extends Vue {
         return Boolean(this.values.login) && Boolean(this.values.password);
     }
 
-    onSubmit(): void {
-        console.log('onSubmit', this.values);
+    // todo: Убрать эти ошибки
+    async onSubmit(): void {
+        try {
+            const res = await this.$axios.$post(this.$api.auth.signup, this.values);
+            console.log(res);
+        } catch (e) {
+            console.log(e.response.data);
+        }
     }
 }
 </script>
