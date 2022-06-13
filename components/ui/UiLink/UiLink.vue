@@ -4,7 +4,7 @@
         v-bind="$attrs"
         :disabled="disabled"
         :class="classList"
-        class="UiButton"
+        class="UiLink"
         @click="$emit('click', $event)"
     >
         <slot></slot>
@@ -16,10 +16,10 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class UiButton extends Vue {
+export default class UiLink extends Vue {
     @Prop({
         type: String,
-        default: 'button',
+        default: 'n-link',
         validator: v => [
             'button',
             'a',
@@ -54,12 +54,6 @@ export default class UiButton extends Vue {
         type: Boolean,
         default: false,
     })
-    active!: boolean;
-
-    @Prop({
-        type: Boolean,
-        default: false,
-    })
     disabled!: boolean;
 
     get classList(): object {
@@ -67,7 +61,6 @@ export default class UiButton extends Vue {
             '--is-disabled': this.disabled,
             [`--${this.size}-size`]: this.size,
             [`--${this.color}-color`]: this.color,
-            '--is-active': this.active,
         };
     }
 }

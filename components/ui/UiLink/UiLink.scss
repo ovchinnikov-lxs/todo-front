@@ -1,0 +1,30 @@
+.UiLink {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    user-select: none;
+    text-decoration: none;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &.--primary-color {
+        color: $primary;
+
+        @include hover {
+            color: darken($primary, 10%);
+        }
+
+        &.--is-disabled {
+            color: rgba($primary, .6);
+        }
+    }
+
+    &.--medium-size {
+        column-gap: mul($unit, 2);
+        font-size: 14px;
+    }
+
+    &.--is-disabled {
+        pointer-events: none;
+    }
+}
