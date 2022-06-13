@@ -1,0 +1,26 @@
+.UiInput {
+    border-radius: $border-radius;
+    border-style: solid;
+    border-width: 1px;
+    font-weight: 400;
+    transition: all .3s ease;
+
+    &.--medium-size {
+        padding: mul($unit, 2) mul($unit, 4) mul($unit, 3);
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &.--is-disabled {
+        user-select: none;
+        pointer-events: none;
+    }
+
+    &.--is-error {
+        border-color: $error;
+
+        @include hover {
+            border-color: $error;
+        }
+    }
+}

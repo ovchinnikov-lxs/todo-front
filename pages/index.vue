@@ -1,19 +1,49 @@
 <template>
-    <div>test</div>
+    <div class="IndexPage">
+        <div :class="$style.wrapper">
+            <h1 :class="$style.title">{{ title }}</h1>
+
+            <TodoList
+                :class="$style.todo"
+            />
+
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-// import { Context } from '@nuxt/types';
+// Common
+import { Context } from '@nuxt/types';
+import { Component, Vue } from 'vue-property-decorator';
 
-export default Vue.extend({
-    name: 'IndexPage',
+// Components
+import TodoList from '~/components/todo/TodoList.vue';
 
-    // asyncData({ error }: Context): Promise<object | void> | object | void {
-    //     error({
-    //         statusCode: 404,
-    //         message: 'lol',
-    //     });
-    // },
-});
+@Component({
+    asyncData(ctx: Context): Promise<object | void> | object | void {
+        console.log(ctx, 'async');
+    },
+
+    components: {
+        TodoList,
+    },
+})
+export default class IndexPage extends Vue {
+    title = 'This is TODO LIST';
+}
 </script>
+
+<style lang="scss" module>
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    text-align: center;
+}
+
+.todo {
+    margin-top: mul($unit, 10);
+}
+</style>

@@ -20,11 +20,12 @@ export default Vue.extend({
     flex-direction: column;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     background-color: $secondary;
 }
 
 .container {
-    width: 1440px;
     margin: 0 auto;
+    padding: mul($unit, 10);
 }
 </style>

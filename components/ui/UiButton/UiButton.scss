@@ -1,0 +1,30 @@
+.UiButton {
+    border-radius: $border-radius;
+    text-align: center;
+    font-weight: 600;
+    transition: all .3s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    user-select: none;
+
+    &.--medium-size {
+        padding: mul($unit, 2) mul($unit, 4) mul($unit, 3);
+    }
+
+    &.--primary-color {
+        background-color: $primary;
+        color: $white;
+
+        @include hover {
+            background-color: darken($primary, 10%);
+        }
+
+        &.--is-disabled {
+            background-color: rgba($primary, .3);
+        }
+    }
+
+    &.--is-disabled {
+        pointer-events: none;
+    }
+}

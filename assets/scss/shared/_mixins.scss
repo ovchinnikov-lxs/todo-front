@@ -6,3 +6,11 @@
     margin-inline-end: 0;
     padding-inline-start: 0;
 }
+
+@mixin hover {
+    @media (hover), (min-width: 0\0) {
+        &:hover {
+            @content;
+        }
+    }
+}

@@ -191,14 +191,6 @@
             "error",
             "always-multiline"
         ],
-        "new-cap": [
-            "error",
-            {
-                "newIsCap": true,
-                "capIsNew": true,
-                "properties": false
-            }
-        ],
         "new-parens": [
             "error",
             "always"

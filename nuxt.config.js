@@ -93,7 +93,7 @@ module.exports = {
     webfontloader: {
         google: {
             families: [
-                'Pacifico:300,400,600,700&display=swap&subset=cyrillic',
+                'Montserrat:300,400,600,700&display=swap&subset=cyrillic',
             ],
         },
     },
