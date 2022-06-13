@@ -13,17 +13,12 @@
 
 <script lang="ts">
 // Common
-import { Context } from '@nuxt/types';
 import { Component, Vue } from 'vue-property-decorator';
 
 // Components
 import TodoList from '~/components/todo/TodoList.vue';
 
 @Component({
-    asyncData(ctx: Context): Promise<object | void> | object | void {
-        console.log(ctx, 'async');
-    },
-
     components: {
         TodoList,
     },

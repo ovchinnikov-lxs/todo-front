@@ -1,5 +1,5 @@
 <template>
-    <div class="AuthPage">
+    <div class="AuthSignupPage">
         <div :class="$style.wrapper">
             <h1 :class="$style.title">
                 {{ title }}
@@ -18,7 +18,7 @@
                 />
 
                 <UiButton :disabled="!allowSubmit">
-                    Войти
+                    Зарегистрироваться
                 </UiButton>
             </form>
         </div>
@@ -30,8 +30,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class AuthPage extends Vue {
-    title = 'Аунтификация';
+export default class AuthSignupPage extends Vue {
+    title = 'Регистрация';
     values: { login: string, password: string } = {
         login: '',
         password: '',
@@ -42,7 +42,7 @@ export default class AuthPage extends Vue {
     }
 
     // todo: Убрать эти ошибки
-    async onSubmit(): void {
+    async onSubmit(): Promise<object | void> {
         try {
             const res = await this.$axios.$post(this.$api.auth.signup, this.values);
             console.log(res);
