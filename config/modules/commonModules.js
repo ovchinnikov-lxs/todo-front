@@ -5,6 +5,8 @@ const commonModules = [
     '@nuxtjs/proxy',
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
+    '@nuxtjs/svg-sprite',
+    'cookie-universal-nuxt',
 ];
 
 export default commonModules;

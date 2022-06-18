@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import sass from 'sass';
 import { config } from 'dotenv';
+
 import headConfig from './config/headConfig';
 import devConfig from './nuxt.dev.config';
 import prodConfig from './nuxt.prod.config';
@@ -110,6 +111,8 @@ module.exports = {
 
     build: {
         publicPath: '/n/',
+
+        transpile: !isDev ? ['@nuxtjs/auth'] : [],
 
         // * You can extend webpack config here
         loaders: {

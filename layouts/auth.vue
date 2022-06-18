@@ -1,5 +1,5 @@
 <template>
-    <main :class="$style.Default">
+    <main :class="$style.Auth">
         <UiToast :class="$style.toast"/>
         <div :class="$style.container">
             <NuxtChild/>
@@ -19,14 +19,14 @@ import UiToast from '~/components/ui/UiToast/UiToast.vue';
         UiToast,
     },
 
-    middleware: ['auth-check'],
+    middleware: ['auth-guest'],
 })
-export default class Default extends Vue {
+export default class Auth extends Vue {
 }
 </script>
 
 <style lang="scss" module>
-.Default {
+.Auth {
     display: flex;
     flex-direction: column;
     width: 100%;

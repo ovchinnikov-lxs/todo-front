@@ -1,4 +1,4 @@
-import { authService } from '~/config/api/_servicies';
+import { authService } from './_servicies';
 
 
 const todoApi = {

@@ -5,6 +5,7 @@ const pluginsConfig = [
     '~/config/plugins/filters.js',
     '~/config/plugins/routes.js',
     '~/config/plugins/sentry.js',
+    '~/config/plugins/toast.js',
     '~/components/ui/ui.js',
 ];
 

@@ -30,7 +30,16 @@ $white: #fff;
 $black: #0c1622;
 $primary: #00dc82;
 $secondary: #eef2f6;
+$success: #00dc82;
 $error: #f84f4f;
+
+/*
+** Shadow
+*/
+
+$box-shadow: 0 0 32px rgba(130, 168, 202, .4);
+$box-shadow-black: 0 0 32px rgba($black, .16);
+$box-shadow-primary: 0 0 24px rgba($primary, .4);
 
 /*
 ** Ui

@@ -20,6 +20,13 @@
                 <UiButton :disabled="!allowSubmit">
                     Зарегистрироваться
                 </UiButton>
+
+                <div :class="$style.info">
+                    Есть аккаунт?
+                    <UiLink :to="$routes.auth.login">
+                        Войти
+                    </UiLink>
+                </div>
             </form>
         </div>
     </div>
@@ -29,10 +36,18 @@
 // Common
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+interface Values {
+    login: string,
+    password: string,
+}
+
+@Component({
+    layout: 'auth',
+    middleware: ['auth-guest'],
+})
 export default class AuthSignupPage extends Vue {
     title = 'Регистрация';
-    values: { login: string, password: string } = {
+    values: Values = {
         login: '',
         password: '',
     };
@@ -41,13 +56,27 @@ export default class AuthSignupPage extends Vue {
         return Boolean(this.values.login) && Boolean(this.values.password);
     }
 
-    // todo: Убрать эти ошибки
     async onSubmit(): Promise<object | void> {
         try {
-            const res = await this.$axios.$post(this.$api.auth.signup, this.values);
-            console.log(res);
-        } catch (e) {
-            console.log(e.response.data);
+            const { token } = await this.$axios.$post(this.$api.auth.signup, this.values);
+            this.$store.dispatch('auth/setToken', token);
+            await this.$router.replace('/');
+        } catch (e: unknown | never) {
+            const res = e.response.data;
+
+            if (res.statusCode) {
+                this.$toast.error(res.message);
+            } else {
+                const items: string[] = Object.keys(res).reduce((acc, cur) => [
+                    ...acc,
+                    ...Object.keys(res[cur]).reduce((iAcc, iCur) => [
+                        ...iAcc,
+                        `${cur} - ${res[cur][iCur].msg}`,
+                    ], []),
+                ], []);
+
+                items.forEach(i => this.$toast.error(i));
+            }
         }
     }
 }
@@ -72,5 +101,9 @@ export default class AuthSignupPage extends Vue {
     width: mul($unit, 100);
     row-gap: mul($unit, 8);
     margin-top: mul($unit, 10);
+}
+
+.info {
+    font-size: 14px;
 }
 </style>
