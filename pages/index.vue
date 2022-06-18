@@ -4,6 +4,7 @@
             <h1 :class="$style.title">{{ title }}</h1>
 
             <TodoList
+                :list="list"
                 :class="$style.todo"
             />
 
@@ -14,17 +15,31 @@
 <script lang="ts">
 // Common
 import { Component, Vue } from 'vue-property-decorator';
+import { Context } from '@nuxt/types';
 
 // Components
-import TodoList from '~/components/todo/TodoList.vue';
+import TodoList from '~/components/todo/TodoList/TodoList.vue';
 
 @Component({
     components: {
         TodoList,
     },
+
+    async asyncData({ $axios, $api } : Context): Promise<void | object> {
+        try {
+            const list = await $axios.$get($api.todo.list);
+
+            return {
+                list,
+            };
+        } catch (e) {
+            console.log(e);
+        }
+    },
 })
 export default class IndexPage extends Vue {
-    title = 'This is TODO LIST';
+    public title = 'This is TODO LIST';
+    public list: Array<object> = [];
 }
 </script>
 
@@ -39,6 +54,7 @@ export default class IndexPage extends Vue {
 }
 
 .todo {
+    width: mul($unit, 100);
     margin-top: mul($unit, 10);
 }
 </style>

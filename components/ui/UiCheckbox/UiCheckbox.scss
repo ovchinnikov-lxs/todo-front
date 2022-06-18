@@ -1,0 +1,58 @@
+.UiCheckbox {
+    display: flex;
+    align-items: flex-start;
+
+    $checkbox: &;
+
+    &.--is-checked {
+
+        #{$checkbox} {
+            &__checkbox {
+                border-color: $primary;
+                background-color: $primary;
+            }
+        }
+    }
+
+    &.--is-disabled {
+        opacity: .4;
+        pointer-events: none;
+    }
+
+    &__checkbox {
+        position: relative;
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        border-radius: 1px;
+        border-color: $secondary;
+        border-style: solid;
+        border-width: 1px;
+        background-color: transparent;
+        outline: none;
+        color: $white;
+        transition: background-color .3s ease, border-color .3s ease;
+        cursor: pointer;
+
+        @include hover {
+            border-color: $primary;
+        }
+
+        .UiIcon {
+            display: block;
+            pointer-events: none;
+        }
+    }
+
+    &__label {
+        margin-top: -.1em;
+        margin-left: mul($unit, 2);
+        font-size: 14px;
+        cursor: pointer;
+        user-select: none;
+
+        span {
+            color: $secondary;
+        }
+    }
+}

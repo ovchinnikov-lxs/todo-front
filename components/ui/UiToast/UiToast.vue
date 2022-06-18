@@ -103,9 +103,9 @@ export default class UiToast extends Vue {
         &.toast-list-leave-active {
             position: absolute;
 
-            //@include respond-to(mobile) {
-            //    position: relative;
-            //}
+            @include respond-to(mobile) {
+                position: relative;
+            }
         }
     }
 }

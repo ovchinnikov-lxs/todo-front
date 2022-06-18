@@ -60,8 +60,8 @@ export default class AuthLoginPage extends Vue {
 
     async onSubmit(): Promise<object | void> {
         try {
-            const res = await this.$axios.$post(this.$api.auth.login, this.values);
-            this.$store.dispatch('auth/setToken', res);
+            const { token } = await this.$axios.$post(this.$api.auth.login, this.values);
+            await this.$store.dispatch('auth/setToken', token);
             await this.$router.replace('/');
         } catch (e: unknown | never) {
             const res = e.response.data;

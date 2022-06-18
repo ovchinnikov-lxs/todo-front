@@ -8,4 +8,6 @@ export default ({ $axios, $cookies }) => {
     if (token) {
         $axios.setHeader('Authorization', `Bearer ${token}`);
     }
+
+    $axios.onRequest(config => config);
 };

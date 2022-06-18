@@ -6,6 +6,7 @@
         :class="classList"
         class="UiInput"
         @input="onInput"
+        @change="onChange"
     >
 </template>
 
@@ -66,6 +67,12 @@ export default class UiInput extends Vue {
         this.innerValue = e.target?.value || '';
 
         this.$emit('input', this.innerValue);
+    }
+
+    onChange(e: {target: {value: string} }): void {
+        this.innerValue = e.target?.value || '';
+
+        this.$emit('change', this.innerValue);
     }
 }
 </script>

@@ -1,6 +1,11 @@
 <template>
     <main :class="$style.Default">
         <UiToast :class="$style.toast"/>
+
+        <header :class="$style.header">
+            <UiButton @click="logOut">Выйти</UiButton>
+        </header>
+
         <div :class="$style.container">
             <NuxtChild/>
         </div>
@@ -22,6 +27,10 @@ import UiToast from '~/components/ui/UiToast/UiToast.vue';
     middleware: ['auth-check'],
 })
 export default class Default extends Vue {
+    logOut() {
+        this.$store.dispatch('auth/logOut');
+        this.$router.push(this.$routes.auth.login);
+    }
 }
 </script>
 
@@ -41,6 +50,14 @@ export default class Default extends Vue {
     left: 0;
     z-index: 10;
     width: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: mul($unit, 10);
 }
 
 .container {
